@@ -43,7 +43,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableWebMvc
 @EnableSwagger2
-@ComponentScan(basePackages = { CommonConstants.BASE_PACKAGE})
+@ComponentScan(basePackages = { CommonConstants.BASE_PACKAGE })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
@@ -78,14 +78,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	 */
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
-        registry.addInterceptor(authenticationInterceptor()).addPathPatterns("/**").excludePathPatterns(
-            "/v2/api-docs", "/configuration/ui", "/swagger-resources/**",CommonConstants.USER_URL + CommonConstants.TOKEN_CREATION,
-            "/user/v1/search/**", "/download/getSteamingFile");
-        registry.addInterceptor(authorizationInterceptor()).addPathPatterns("/**").excludePathPatterns(
-        		"/v2/api-docs", "/configuration/ui", "/swagger-resources/**",CommonConstants.USER_URL + CommonConstants.TOKEN_CREATION,
-        		"/user/v1/search/**", "/download/getSteamingFile");
-    }
+		registry.addInterceptor(corsInterceptor()).addPathPatterns("/**");
+		registry.addInterceptor(authenticationInterceptor()).addPathPatterns("/**").excludePathPatterns("/v2/api-docs",
+				"/configuration/ui", "/swagger-resources/**", CommonConstants.USER_URL + CommonConstants.TOKEN_CREATION,
+				"/user/v1/search/**", "/download/getSteamingFile");
+		registry.addInterceptor(authorizationInterceptor()).addPathPatterns("/**").excludePathPatterns("/v2/api-docs",
+				"/configuration/ui", "/swagger-resources/**", CommonConstants.USER_URL + CommonConstants.TOKEN_CREATION,
+				"/user/v1/search/**", "/download/getSteamingFile");
+	}
 
 	/**
 	 * Bean to handle CORS Interceptor
@@ -109,7 +109,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean(name = CommonConstants.QUERY_PROPERTY_READER)
 	public PropertyReader propertReader() {
-		return new PropertyReader(CommonConstants.QUERY_PROPERTIES_FILENAME);
+		return new PropertyReader(CommonConstants.APPLICATION_PROPERTIES_FILENAME);
 	}
 
 	/* Error Property File Reader */
@@ -158,9 +158,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource bean = new ReloadableResourceBundleMessageSource();
-		//bean.setBasename("classpath:messages");
+		bean.setBasename("classpath:messages");
 		bean.setDefaultEncoding("UTF-8");
-		bean.setBasenames("classpath:messages", "classpath:application","classpath:error");
 		return bean;
 	}
 
@@ -171,6 +170,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
-	
 
+	/**/
 }

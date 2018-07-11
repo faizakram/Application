@@ -6,7 +6,7 @@ public class CommonConstants {
 	public static final String SLAH = "/";
 	public static final Integer ONE = 1;
 	public static final String QUERY_PROPERTY_READER = "ApplicationProperty";
-	public static final String QUERY_PROPERTIES_FILENAME = "application.properties";
+	public static final String APPLICATION_PROPERTIES_FILENAME = "application.properties";
 	public static final String MONGODB_USERNAME = "mongo.username";
 	public static final String MONGODB_DB_NAME = "mongo.dbname";
 	public static final String MONGODB_AUTHENTICATION = "mongo.password";

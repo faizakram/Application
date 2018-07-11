@@ -31,7 +31,7 @@ public class LoginController {
 	
 	@Autowired
 	private ResponseJson response;
-
+	
 	/**
 	 * For Token Creation 
 	 * @param loginDetails
