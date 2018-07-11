@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>App</groupId>
+    <artifactId>App</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>App_Service</groupId>
+  <artifactId>App_Service</artifactId>
+  <name>Business logic Layer</name>
+  <description>Business logic Layer</description>
+  <properties>
+		<App_Utility.version>0.0.1-SNAPSHOT</App_Utility.version>
+		<App_Dao.version>0.0.1-SNAPSHOT</App_Dao.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>App_Utility</groupId>
+			<artifactId>App_Utility</artifactId>
+			<version>${App_Utility.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>App_Dao</groupId>
+			<artifactId>App_Dao</artifactId>
+			<version>${App_Dao.version}</version>
+		</dependency>
+	</dependencies>
+  <build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.2</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
