@@ -19,7 +19,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
 		  AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 	        ContextLoaderListener contextLoaderListener = new ContextLoaderListener(ctx);
 	        servletContext.addListener(contextLoaderListener);
-	        ctx.register(AppConfig.class);
+	        ctx.register(WebConfig.class);
 	       // ctx.register(SwaggerConfig.class);
 	        ctx.register(MySqlDbConfig.class);
 	        //ctx.register(QuartzConfiguration.class);

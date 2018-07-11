@@ -1,7 +1,7 @@
 package com.app.util.constant;
 
 public class CommonConstants {
-	public static final String BASE_PACKAGE = "com.sparks";
+	public static final String BASE_PACKAGE = "com.app";
 	public static final String DISPATCHER = "dispatcher";
 	public static final String SLAH = "/";
 	public static final Integer ONE = 1;

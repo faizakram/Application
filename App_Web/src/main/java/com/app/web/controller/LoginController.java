@@ -20,11 +20,10 @@ import com.app.util.response.ResponseJson;
 public class LoginController {
 
 	//private static Logger logger = Logger.getLogger(LoginController.class);
-
+	
+	
 	@Autowired
 	private AuthenticationService authenticationService;
-	/*@Autowired
-	private ValidationUtils validationUtils;*/
 
 	@Autowired
 	@Qualifier(CommonConstants.ERROR_CODE_HELPER)
