@@ -83,10 +83,8 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
 	@Override
 	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpStatus httpStatus = HttpStatus.OK;
-
 		ErrorInfo errorInfo = errorCodeHelper.getErrorInfo(CommonConstants.E1002_ERROR_CODE,
 				CommonConstants.E1002_ERROR_DESCRIPTION);
 		return handleExceptionInternal(ex, errorInfo, headers, httpStatus, request);
@@ -94,9 +92,9 @@ public class ExceptionController extends ResponseEntityExceptionHandler {
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
-			HttpHeaders headers, HttpStatus httpStatus, WebRequest request) {
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		httpStatus = HttpStatus.OK;
+		HttpStatus httpStatus = HttpStatus.OK;
 		ErrorInfo errorInfo = errorCodeHelper.getError(CommonConstants.E1002_ERROR_CODE,
 				ex.getBindingResult().toString());
 		return handleExceptionInternal(ex, errorInfo, headers, httpStatus, request);
