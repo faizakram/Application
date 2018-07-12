@@ -43,7 +43,7 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 public class TokenServiceImpl implements TokenService {
 
 	@Autowired
-    @Qualifier(CommonConstants.QUERY_PROPERTY_READER)
+    @Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
     private PropertyReader appPropertyReader;
 	
     @Autowired

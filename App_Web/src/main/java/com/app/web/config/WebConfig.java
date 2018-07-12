@@ -24,6 +24,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.app.util.constant.CommonConstants;
 import com.app.util.error.ErrorCodeHelper;
 import com.app.util.reader.PropertyReader;
+import com.app.util.request.SearchDTO;
 import com.app.web.config.interceptor.AuthenticationInterceptor;
 import com.app.web.config.interceptor.AuthorizationInterceptor;
 import com.app.web.config.interceptor.CORSInterceptor;
@@ -47,7 +48,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	@Qualifier(CommonConstants.QUERY_PROPERTY_READER)
+	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
 	private PropertyReader propertyReader;
 
 	/**
@@ -107,7 +108,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	 * createCommonsMultipartResolver() { return new CommonsMultipartResolver(); }
 	 */
 
-	@Bean(name = CommonConstants.QUERY_PROPERTY_READER)
+	@Bean(name = CommonConstants.APPLICATION_PROPERTY_READER)
 	public PropertyReader propertReader() {
 		return new PropertyReader(CommonConstants.APPLICATION_PROPERTIES_FILENAME);
 	}
@@ -170,6 +171,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
-
+	
+	@Bean
+	public SearchDTO getSearchDTOBean() {
+	return new SearchDTO();
+	}
 	/**/
 }

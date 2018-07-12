@@ -166,11 +166,7 @@ public class LoginDAOImplemaintation implements LoginDAOInterFace {
 		Query query = sessionFactory.getCurrentSession().createQuery("select user from Users user where user.userProfile.userEmailId =:userEMail and user.password =:password");
 		query.setString("userEMail", userEmail);
 		query.setString("password", userCredentail);
-		/*Criteria cr = sessionFactory.getCurrentSession().createCriteria(Users.class);
-		cr.add(Restrictions.eq("userMailid", email));
-		cr.add(Restrictions.eq("password", password));
-		//cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-*/		logger.info(LoginDAOImplemaintation.class.getMethods());
+		logger.info(LoginDAOImplemaintation.class.getMethods());
 		return (Users) query.uniqueResult();
 	}
 

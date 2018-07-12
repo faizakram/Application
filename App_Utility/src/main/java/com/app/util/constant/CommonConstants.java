@@ -84,5 +84,8 @@ public class CommonConstants {
 	public static final String ROLE_STUDENT = "ROLE_STUDENT";
 	public static final String ALLOW_ROLE_ALL = "ROLE_ALL";
 	public static final String DOWNLOAD_FILE = "/download/";
+	public static final String CUSTOMTEST = "customtest";
+	public static final String CUSTOM = "/custom/test/";
+	
 	
 }

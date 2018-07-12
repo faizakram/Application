@@ -21,7 +21,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 public class MySqlDbConfig {
 
 	@Autowired
-	@Qualifier(CommonConstants.QUERY_PROPERTY_READER)
+	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
 	private PropertyReader propertyReader;
 
 	
