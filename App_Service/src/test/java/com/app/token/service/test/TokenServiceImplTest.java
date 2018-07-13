@@ -1,11 +1,13 @@
 package com.app.token.service.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.security.Key;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -21,39 +23,53 @@ import mockit.Injectable;
 import mockit.Tested;
 
 public class TokenServiceImplTest {
-	
+
 	@Tested
 	private TokenServiceImpl tokenServiceImpl;
-	
-	@Injectable
-    @Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
-    private PropertyReader appPropertyReader;
-	
-	@Injectable
-    @Qualifier(CommonConstants.ERROR_CODE_HELPER)
-    private ErrorCodeHelper errorCodeHelper;
 
 	@Injectable
-    private UserTokenService userTokenService;
+	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
+	private PropertyReader appPropertyReader;
+
+	@Injectable
+	@Qualifier(CommonConstants.ERROR_CODE_HELPER)
+	private ErrorCodeHelper errorCodeHelper;
+
+	@Injectable
+	private UserTokenService userTokenService;
 
 	private Users user;
-    private static Key secret = MacProvider.generateKey();
-    
-    @Before
-    public void preLoad()
-    {
-    	user = new Users();
-    	user.setId(1);
-    	user.setPassword("123");
-    	
-    }
-    
-    @Test
-    @Ignore
-    public void generateUserTokenTest() {
-    	
+	private static Key secret = MacProvider.generateKey();
+
+	@Before
+	public void preLoad() {
+		user = new Users();
+		user.setId(1);
+		user.setPassword("123");
+
+	}
+
+	@Test
+	public void generateUserTokenTest() {
 		assertNotNull(tokenServiceImpl.generateUserToken(user));
-    	
-    }
+	}
+
+	@Test
+	public void isTokenExpiredTest() {
+		assertEquals(false, tokenServiceImpl.isTokenExpired(new Date()));
+	}
+
+	@Test
+	public void isTokenExpiredTest2() {
+		assertEquals(true, tokenServiceImpl.isTokenExpired(update_Date()));
+	}
+	
+	private Date update_Date()
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.MINUTE, -301);
+		return cal.getTime();
+	}
 
 }

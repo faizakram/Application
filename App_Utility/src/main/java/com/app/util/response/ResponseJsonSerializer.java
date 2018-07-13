@@ -32,6 +32,7 @@ public class ResponseJsonSerializer extends StdSerializer<ResponseJson>{
         	jgen.writeStringField("responseDescription", responseJson.getResponseDescription());
         if(responseJson.getResponse() != null)
         	jgen.writeObjectField("response", responseJson.getResponse());
+        
         jgen.writeEndObject();
     }
 

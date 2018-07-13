@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.annotation.Resource;
 import javax.crypto.spec.SecretKeySpec;
 import javax.transaction.Transactional;
 
@@ -42,12 +43,10 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 @Transactional
 public class TokenServiceImpl implements TokenService {
 
-	@Autowired
-    @Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
+	@Resource(name = CommonConstants.APPLICATION_PROPERTY_READER)
     private PropertyReader appPropertyReader;
 	
-    @Autowired
-    @Qualifier(CommonConstants.ERROR_CODE_HELPER)
+    @Resource(name = CommonConstants.ERROR_CODE_HELPER)
     private ErrorCodeHelper errorCodeHelper;
 
     @Autowired
@@ -69,7 +68,6 @@ public class TokenServiceImpl implements TokenService {
 
         Claims claims = Jwts.claims().setSubject(String.valueOf(user.getId()));
         claims.put("CLAIM_TOKEN_VERSION", getRandomToken());
-        
         UserToken token = new UserToken();
         token.setToken(Jwts.builder().setClaims(claims)
             .signWith(SignatureAlgorithm.HS512, secret).compact());
@@ -85,7 +83,6 @@ public class TokenServiceImpl implements TokenService {
      * @return Double
      */
     private Double getRandomToken() {
-
         Double randomToken = null;
         try {
 
@@ -180,11 +177,7 @@ public class TokenServiceImpl implements TokenService {
      */
     @Override
     public boolean isTokenExpired(Date lastUsed) {
-        if (lastUsed.getTime() +
-            300 *
-                (60 * 1000L) < System.currentTimeMillis()) {
-            return true;
-        }
-        return false;
+    	return lastUsed.getTime() + 300 * (60 * 1000L) < System.currentTimeMillis();
     }
+       
 }

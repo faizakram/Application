@@ -28,7 +28,6 @@
 		</dependency>
 	</dependencies>
   <build>
-		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -50,7 +49,6 @@
 					</configuration>
 				</plugin>
 			</plugins>
-		</pluginManagement>
 		<finalName>Spring_Web_App</finalName>
 	</build>
 </project>

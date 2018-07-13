@@ -2,12 +2,12 @@ package com.app.util.response;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class UserData {
 	
 	private String name;
-	@DateTimeFormat(pattern="dd/MM/yyyy")
+	
 	private Date dob;
 	private String password;
 	public String getName() {
@@ -16,6 +16,7 @@ public class UserData {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	public Date getDob() {
 		return dob;
 	}

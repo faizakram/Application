@@ -11,7 +11,6 @@
   <description>Utility Classes or Method Implementation </description>
   
   <build>
-		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -23,6 +22,5 @@
 					</configuration>
 				</plugin>
 			</plugins>
-		</pluginManagement>
 	</build>
 </project>
