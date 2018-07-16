@@ -22,7 +22,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
 	        ctx.register(WebConfig.class);
 	       // ctx.register(SwaggerConfig.class);
 	        ctx.register(MySqlDbConfig.class);
-	        //ctx.register(QuartzConfiguration.class);
+	        ctx.register(QuartzConfig.class);
 	        //ctx.register(JobConfiguration.class);
 	        //ctx.setServletContext(servletContext);
 	        ServletRegistration.Dynamic servlet = servletContext.addServlet(CommonConstants.DISPATCHER, new DispatcherServlet(ctx));
