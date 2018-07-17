@@ -22,7 +22,7 @@ public class WebAppInitializer implements WebApplicationInitializer{
 	        ctx.register(WebConfig.class);
 	        ctx.register(MySqlDbConfig.class);
 	        ctx.register(QuartzConfig.class);
-	        /*ctx.register(RedisConfig.class);*/
+	        ctx.register(RedisConfig.class);
 	        //ctx.setServletContext(servletContext);
 	        ServletRegistration.Dynamic servlet = servletContext.addServlet(CommonConstants.DISPATCHER, new DispatcherServlet(ctx));
 	        servlet.setLoadOnStartup(CommonConstants.ONE);
