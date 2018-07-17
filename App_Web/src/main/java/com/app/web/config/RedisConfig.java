@@ -6,10 +6,8 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-@EnableScheduling
 public class RedisConfig {
 	@Bean
 	JedisConnectionFactory jedisConnectionFactory() {

@@ -20,10 +20,9 @@ public class WebAppInitializer implements WebApplicationInitializer{
 	        ContextLoaderListener contextLoaderListener = new ContextLoaderListener(ctx);
 	        servletContext.addListener(contextLoaderListener);
 	        ctx.register(WebConfig.class);
-	       // ctx.register(SwaggerConfig.class);
 	        ctx.register(MySqlDbConfig.class);
 	        ctx.register(QuartzConfig.class);
-	        //ctx.register(JobConfiguration.class);
+	        /*ctx.register(RedisConfig.class);*/
 	        //ctx.setServletContext(servletContext);
 	        ServletRegistration.Dynamic servlet = servletContext.addServlet(CommonConstants.DISPATCHER, new DispatcherServlet(ctx));
 	        servlet.setLoadOnStartup(CommonConstants.ONE);
