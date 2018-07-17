@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.app.util.constant.CommonConstants;
 import com.app.util.error.response.ErrorInfo;
+import com.app.util.error.response.ErrorMessage;
 import com.app.util.reader.PropertyReader;
 
 /**
@@ -75,4 +76,11 @@ public class ErrorCodeHelper {
         return errorInfo;
     }
     
+    
+    public ErrorInfo getError(String httpError,ErrorMessage errorMessage) {      
+    	//ErrorInfo errorInfo = new ErrorInfo();	
+        errorInfo.setResponseCode(httpError);
+        errorInfo.setErrorMessage(errorMessage);
+        return errorInfo;
+    }
 }

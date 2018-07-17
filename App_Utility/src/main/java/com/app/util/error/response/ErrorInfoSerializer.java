@@ -24,11 +24,14 @@ public class ErrorInfoSerializer extends StdSerializer<ErrorInfo>{
     		ErrorInfo errorInfo, JsonGenerator jgen, SerializerProvider provider) 
       throws IOException, JsonProcessingException {
         jgen.writeStartObject();
-        jgen.writeStringField("errorCode", errorInfo.getResponseCode());
+        jgen.writeStringField("errorCode", errorInfo.getResponseCode());        
         if(errorInfo.getResponseDescription() != null)
         	jgen.writeStringField("errorDescription", errorInfo.getResponseDescription());
         if(errorInfo.getReferenceNumber() != null)
         	jgen.writeObjectField("error", errorInfo.getReferenceNumber());
+        if(errorInfo.getErrorMessage() != null)
+        	jgen.writeObjectField("errorMessage", errorInfo.getErrorMessage());
+        
         jgen.writeEndObject();
     }
 

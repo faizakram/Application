@@ -30,6 +30,8 @@ public class ErrorInfo implements Serializable{
     private String responseDescription;
     
     private Integer referenceNumber;
+    
+    private ErrorMessage errorMessage;
  
     public Integer getReferenceNumber() {
         return referenceNumber;
@@ -44,7 +46,17 @@ public class ErrorInfo implements Serializable{
         return responseCode;
     }
 
-    public void setResponseCode(String responseCode) {
+    public ErrorMessage getErrorMessage() {
+		return errorMessage;
+	}
+
+
+	public void setErrorMessage(ErrorMessage errorMessage) {
+		this.errorMessage = errorMessage;
+	}
+
+
+	public void setResponseCode(String responseCode) {
         this.responseCode = responseCode;
     }
 
@@ -57,11 +69,11 @@ public class ErrorInfo implements Serializable{
     }
 
 
-    @Override
-    public String toString() {
-        return "ErrorInfo [responseCode=" + responseCode + ", responseDescription=" + responseDescription +
-            ", referenceNumber=" + referenceNumber + "]";
-    }
-
+	@Override
+	public String toString() {
+		return "ErrorInfo [responseCode=" + responseCode + ", responseDescription=" + responseDescription
+				+ ", referenceNumber=" + referenceNumber + ", errorMessage=" + errorMessage + "]";
+	}   
+    
 
 }
