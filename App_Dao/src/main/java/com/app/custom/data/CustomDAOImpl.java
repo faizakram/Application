@@ -16,11 +16,12 @@ public class CustomDAOImpl implements CustomDAO {
 	private SessionFactory sessionFactory;
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserData> getUserData() {
-		String queryString = "select user.name as name, user.dob as dob, user.userses.password as password from UserProfile user where user.userEmailId='surajmba.mba@gmail.com'";
+		String queryString = "select user.name as name, user.dob as dob, user.userses.password as password from UserProfile user where user.userEmailId='faiz.krm@gmail.com'";
 		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
-		query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+		query.setResultTransformer(Transformers.aliasToBean(UserData.class));
 		return query.list();
 	}
 

@@ -86,6 +86,7 @@ public class CommonConstants {
 	public static final String DOWNLOAD_FILE = "/download/";
 	public static final String CUSTOMTEST = "customtest";
 	public static final String CUSTOM = "/custom/test/";
+	public static final String MY_TIME_ZONE = "Asia/Kolkata";
 	
 	
 }
