@@ -115,6 +115,7 @@ public class CommonConstants {
 	public static final int MAX_ALLOWED_PAGE_SIZE = 100;
 	public static final int DEFAULT_PAGE_NO = 1;
 	public static final String SECRET_KEY = "com.aes.bouncy.secret.key";
+	public static final String PROTO_TYPE = "prototype";
 	
 	
 }

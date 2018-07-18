@@ -20,6 +20,10 @@ public class CustomServiceImpl implements CustomService {
 	@Override
 	public List<UserData> getCustomUser() {
 		// TODO Auto-generated method stub
+		/*UserData user = StaticContextHolder.getBean(UserData.class);
+		UserData user1 = StaticContextHolder.getBean(UserData.class);
+		System.out.println(user +" ============= "+ user1);*/
+		
 		return customDao.getUserData();
 	}
 
