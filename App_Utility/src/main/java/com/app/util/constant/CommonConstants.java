@@ -104,4 +104,15 @@ public class CommonConstants {
 	public static final Integer MAX_LIFE_TIME = 60000;
 	/* Database Connection Issue Done Here */
 	
+	public static final String DAYS = "DAYS";
+	public static final String MONTHS = "MONTHS";
+	public static final String YEARS = "YEARS";
+	public static final String SIMPLE_DATE_FORMAT_VALUE = "yyyy-MM-dd";
+	public static final String UTC_TIME_ZONE = "UTC";
+	public static final String SIMPLE_DATE_TIME_FORMAT_VALUE = "yyyy-MM-dd HH:mm:ss";
+	
+	public static final int DEFAULT_PAGE_SIZE = 50;
+	public static final int MAX_ALLOWED_PAGE_SIZE = 100;
+	public static final int DEFAULT_PAGE_NO = 1;
+	
 }

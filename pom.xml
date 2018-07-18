@@ -40,7 +40,8 @@
 		<hibernate.hikaricp.version>4.3.11.Final</hibernate.hikaricp.version>
 		<jersey.bundle>1.10-b01</jersey.bundle>
 		<commons.lang3>3.7</commons.lang3>
-		
+
+		<org.bouncycastle.version>1.60</org.bouncycastle.version>
 	</properties>
 	<dependencies>
 		<dependency>
