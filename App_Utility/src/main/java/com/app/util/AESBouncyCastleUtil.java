@@ -34,7 +34,7 @@ public class AESBouncyCastleUtil {
         
         AESCipher = new AESEngine();
         pbbc = new PaddedBufferedBlockCipher(AESCipher, new PKCS7Padding());
-        SecretKey sk = new SecretKeySpec(this.systemPropertyReader.getProperty("SECRET_KEY").getBytes(), "AES");
+        SecretKey sk = new SecretKeySpec(this.systemPropertyReader.getProperty(CommonConstants.SECRET_KEY).getBytes(), "AES");
         key = new KeyParameter(sk.getEncoded());
     }
     
