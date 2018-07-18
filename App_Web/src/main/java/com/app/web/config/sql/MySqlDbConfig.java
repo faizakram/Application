@@ -1,7 +1,8 @@
 package com.app.web.config.sql;
 
-import java.beans.PropertyVetoException;
 import java.util.Properties;
+
+import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.app.util.constant.CommonConstants;
 import com.app.util.reader.PropertyReader;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration
 @EnableTransactionManagement
@@ -23,7 +25,8 @@ public class MySqlDbConfig {
 	@Autowired
 	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
 	private PropertyReader propertyReader;
-
+    
+    private DataSource datasource;
 	
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
@@ -33,26 +36,41 @@ public class MySqlDbConfig {
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
+	
+	    
+	    @Bean
+	    public DataSource dataSource() {
 
-	@Bean
-	public ComboPooledDataSource dataSource() {
-		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		try {
-			dataSource.setDriverClass(propertyReader.getProperty(CommonConstants.JDBC_DRIVER_CLASS_NAME));
-		} catch (PropertyVetoException e) {
-		}
-		dataSource.setJdbcUrl(propertyReader.getProperty(CommonConstants.JDBC_URL));
-		dataSource.setUser(propertyReader.getProperty(CommonConstants.JDBC_USERNAME));
-		dataSource.setPassword(propertyReader.getProperty(CommonConstants.JDBC_CREDENTIAL));
-		dataSource.setInitialPoolSize(
-				Integer.parseInt(propertyReader.getProperty(CommonConstants.CONN_POOL_INITIAL_SIZE)));
-		dataSource.setAcquireIncrement(Integer.parseInt(propertyReader.getProperty(CommonConstants.CONN_POOL_ACQ_INC)));
-		dataSource.setMinPoolSize(Integer.parseInt(propertyReader.getProperty(CommonConstants.CONN_POOL_MIN_SIZE)));
-		dataSource.setMaxPoolSize(Integer.parseInt(propertyReader.getProperty(CommonConstants.CONN_POOL_MAX_SIZE)));
-		dataSource.setMaxIdleTime(Integer.parseInt(propertyReader.getProperty(CommonConstants.CONN_POOL_IDLE_PERIOD)));
-		dataSource.setPreferredTestQuery(propertyReader.getProperty(CommonConstants.PREFERRED_TEST_QUERY));
-		return dataSource;
-	}
+	        if (datasource == null) {
+	            HikariConfig config = new HikariConfig();
+
+	            config.setJdbcUrl(propertyReader.getProperty(CommonConstants.JDBC_URL));
+	            config.setUsername(propertyReader.getProperty(CommonConstants.JDBC_USERNAME));
+	            config.setPassword(propertyReader.getProperty(CommonConstants.JDBC_CREDENTIAL));
+
+	            /*Changes Related to Database Connection Issue*/
+	            config.setIdleTimeout(CommonConstants.IDLE_TIME_OUT_MS);
+	            config.setConnectionTimeout(CommonConstants.CONNECTION_TIME_OUT);
+	            config.setValidationTimeout(CommonConstants.VALIDATION_TIME_OUT);
+	            config.setMaxLifetime(CommonConstants.MAX_LIFE_TIME);
+	            /*Database Connection Issue Done Here*/
+	            
+	            config.setMaximumPoolSize(CommonConstants.TEN);
+	            config.setAutoCommit(false);
+	            config.addDataSourceProperty(CommonConstants.CACHE_PREP_STMTS,
+	            		propertyReader.getProperty(CommonConstants.HIBERNATE_CACHEPREPSTMTS));
+	            config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SIZE,
+	            		propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESIZE));
+	            config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SQL_LIMIT,
+	            		propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESQLLIMIT));
+	            config.addDataSourceProperty(CommonConstants.USE_SERVER_PREP_STMTS,
+	            		propertyReader.getProperty(CommonConstants.HIBERNATE_USESERVERPREPSTMTS));
+
+	            datasource = new HikariDataSource(config);
+	        }
+	        return datasource;
+
+	    }
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();

@@ -5,13 +5,14 @@ public class CommonConstants {
 	public static final String DISPATCHER = "dispatcher";
 	public static final String SLAH = "/";
 	public static final Integer ONE = 1;
+	public static final Integer TEN = 10;
 	public static final String APPLICATION_PROPERTY_READER = "ApplicationProperty";
 	public static final String APPLICATION_PROPERTIES_FILENAME = "application.properties";
 	public static final String MODEL_PACKAGE = "com.app.model";
 	public static final String JDBC_DRIVER_CLASS_NAME = "jdbc.driverClassName";
 	public static final String JDBC_URL = "jdbc.url";
 	public static final String JDBC_USERNAME = "jdbc.username";
-	public static final String JDBC_CREDENTIAL = "jdbc.password";
+	public static final String JDBC_CREDENTIAL = "jdbc.pass";
 	public static final String HIBERNATE_DIALECT = "hibernate.dialect";
 	public static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	public static final String HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
@@ -88,5 +89,24 @@ public class CommonConstants {
 	public static final String CUSTOM = "/custom/test/";
 	public static final String MY_TIME_ZONE = "Asia/Kolkata";
 	
+	
+	
+
+	public static final String CACHE_PREP_STMTS = "cachePrepStmts";
+	public static final String PREP_STMT_CACHE_SIZE = "prepStmtCacheSize";
+	public static final String PREP_STMT_CACHE_SQL_LIMIT = "prepStmtCacheSqlLimit";
+	public static final String USE_SERVER_PREP_STMTS = "useServerPrepStmts";
+	public static final String HIBERNATE_CACHEPREPSTMTS = "hibernate.hikari.dataSource.cachePrepStmts";
+	public static final String HIBERNATE_PREPSTMTCACHESIZE = "hibernate.hikari.dataSource.prepStmtCacheSize";
+	public static final String HIBERNATE_PREPSTMTCACHESQLLIMIT = "hibernate.hikari.dataSource.prepStmtCacheSqlLimit";
+	public static final String HIBERNATE_USESERVERPREPSTMTS = "hibernate.hikari.dataSource.useServerPrepStmts";
+	public static final String CLASSPATH_SYSTEM_PROPERTIES = "classpath:messages";
+	
+	/* Changes Related to Database Connection Issue */
+	public static final Integer IDLE_TIME_OUT_MS = 60000;
+	public static final Integer CONNECTION_TIME_OUT = 60000;
+	public static final Integer VALIDATION_TIME_OUT = 30000;
+	public static final Integer MAX_LIFE_TIME = 60000;
+	/* Database Connection Issue Done Here */
 	
 }

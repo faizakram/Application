@@ -1,5 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>App</groupId>
@@ -20,7 +19,6 @@
 		<aspectj.version>1.8.9</aspectj.version>
 		<spring.mongodb.version>1.10.8.RELEASE</spring.mongodb.version>
 		<hibernate.version>4.3.11.Final</hibernate.version>
-		<hibernateC3p0.version>4.2.0.SP1</hibernateC3p0.version>
 		<mysql.connector.version>5.1.31</mysql.connector.version>
 		<org.quartz-scheduler.version>2.2.2</org.quartz-scheduler.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
@@ -39,8 +37,17 @@
 		<hibernate-validator.version>5.4.2.Final</hibernate-validator.version>
 		<jmockit.version>1.24</jmockit.version>
 		<junit.version>4.11</junit.version>
+		<hibernate.hikaricp.version>4.3.11.Final</hibernate.hikaricp.version>
+		<jersey.bundle>1.10-b01</jersey.bundle>
+		<commons.lang3>3.7</commons.lang3>
+		
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-hikaricp</artifactId>
+			<version>${hibernate.hikaricp.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
@@ -89,12 +96,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>${hibernateC3p0.version}</version>
-		</dependency>
+		</dependency>		
 
 		<!-- MySQL -->
 		<dependency>
@@ -192,20 +194,12 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-swagger2.version}</version>
 		</dependency>
-
-		<!-- Google Captcha -->
-		<dependency>
-			<groupId>net.tanesha.recaptcha4j</groupId>
-			<artifactId>recaptcha4j</artifactId>
-			<version>0.0.7</version>
-		</dependency>
-
-		<!-- Google Captcha -->
+	
 		<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-bundle -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-bundle</artifactId>
-			<version>1.10-b01</version>
+			<version>${jersey.bundle}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -221,7 +215,7 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.7</version>
+			<version>${commons.lang3}</version>
 		</dependency>
 
 		<!-- Jwt token dependency -->
@@ -236,5 +230,5 @@
 			<version>${javax.servlet-api.version}</version>
 		</dependency>
 	</dependencies>
-	
+
 </project>

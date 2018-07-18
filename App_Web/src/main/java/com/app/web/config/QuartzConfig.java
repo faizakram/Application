@@ -3,6 +3,8 @@ package com.app.web.config;
 import java.io.IOException;
 import java.util.Properties;
 
+import javax.sql.DataSource;
+
 import org.quartz.Trigger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
@@ -16,14 +18,14 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import com.app.quartz.service.MyJob;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 public class QuartzConfig {
 
     // this data source points to the database that contains Quartz tables
     @Autowired
-    private ComboPooledDataSource dataSource;
+    private DataSource dataSource;
+    
 
     @Autowired
     private PlatformTransactionManager transactionManager;
