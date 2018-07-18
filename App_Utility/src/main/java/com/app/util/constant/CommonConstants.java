@@ -9,7 +9,7 @@ public class CommonConstants {
 	public static final String APPLICATION_PROPERTY_READER = "ApplicationProperty";
 	public static final String APPLICATION_PROPERTIES_FILENAME = "application.properties";
 	public static final String MODEL_PACKAGE = "com.app.model";
-	public static final String JDBC_DRIVER_CLASS_NAME = "jdbc.driverClassName";
+
 	public static final String JDBC_URL = "jdbc.url";
 	public static final String JDBC_USERNAME = "jdbc.username";
 	public static final String JDBC_CREDENTIAL = "jdbc.pass";
@@ -17,12 +17,7 @@ public class CommonConstants {
 	public static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	public static final String HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
 	public static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
-	public static final String CONN_POOL_MIN_SIZE = "hibernate.conn.pool.min.size";
-	public static final String CONN_POOL_MAX_SIZE = "hibernate.conn.pool.max.size";
-	public static final String CONN_POOL_IDLE_PERIOD = "hibernate.conn.pool.idle.period";
-	public static final String CONN_POOL_INITIAL_SIZE = "hibernate.conn.pool.initial.size";
-	public static final String CONN_POOL_ACQ_INC = "hibernate.conn.pool.acq.inc";
-	public static final String PREFERRED_TEST_QUERY = "hibernate.preferred.test.query";
+
 	public static final String DISPATCHOPTIONSREQUEST = "dispatchOptionsRequest";
 	public static final String TRUETXT = "true";
 	public static final String X_AUTH_TOKEN = "X-Auth-Token";
