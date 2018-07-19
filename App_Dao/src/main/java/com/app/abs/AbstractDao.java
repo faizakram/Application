@@ -8,7 +8,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
-@PropertySource("classpath:query.properties")
+
+import com.app.util.constant.CommonConstants;
+@PropertySource(CommonConstants.QUERY_PROPERTIES)
 public abstract class AbstractDao<PK extends Serializable, T> {
 	
 	private final Class<T> persistentClass;

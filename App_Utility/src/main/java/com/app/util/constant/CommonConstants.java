@@ -9,7 +9,7 @@ public class CommonConstants {
 	public static final String APPLICATION_PROPERTY_READER = "ApplicationProperty";
 	public static final String APPLICATION_PROPERTIES_FILENAME = "classpath:application.properties";
 	public static final String MODEL_PACKAGE = "com.app.model";
-
+	public static final String QUERY_PROPERTIES = "classpath:query.properties";
 	public static final String JDBC_URL = "jdbc.url";
 	public static final String JDBC_USERNAME = "jdbc.username";
 	public static final String JDBC_CREDENTIAL = "jdbc.pass";
