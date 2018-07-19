@@ -7,7 +7,7 @@ public class CommonConstants {
 	public static final Integer ONE = 1;
 	public static final Integer TEN = 10;
 	public static final String APPLICATION_PROPERTY_READER = "ApplicationProperty";
-	public static final String APPLICATION_PROPERTIES_FILENAME = "application.properties";
+	public static final String APPLICATION_PROPERTIES_FILENAME = "classpath:application.properties";
 	public static final String MODEL_PACKAGE = "com.app.model";
 
 	public static final String JDBC_URL = "jdbc.url";
@@ -31,10 +31,10 @@ public class CommonConstants {
 
 	// Error Property File
 	public static final String ERROR_PROPERTY = "errorproperty";
-	public static final String ERROR_PROPERTIES = "error.properties";
+	public static final String ERROR_PROPERTIES = "classpath:error.properties";
 	// Success Property File
 	public static final String SUCCESS_PROPERTY = "sucessproperty";
-	public static final String SUCCESS_PROPERTIES = "success.properties";
+	public static final String SUCCESS_PROPERTIES = "classpath:success.properties";
 
 	// Success Code Information
 	public static final String S0001_SUCCESS_CODE = "SM-HTTP_CODE-S0001";
@@ -95,7 +95,7 @@ public class CommonConstants {
 	public static final String HIBERNATE_PREPSTMTCACHESIZE = "hibernate.hikari.dataSource.prepStmtCacheSize";
 	public static final String HIBERNATE_PREPSTMTCACHESQLLIMIT = "hibernate.hikari.dataSource.prepStmtCacheSqlLimit";
 	public static final String HIBERNATE_USESERVERPREPSTMTS = "hibernate.hikari.dataSource.useServerPrepStmts";
-	public static final String CLASSPATH_SYSTEM_PROPERTIES = "classpath:messages";
+	public static final String CLASSPATH_MESSAGES_PROPERTIES = "classpath:messages";
 	
 	/* Changes Related to Database Connection Issue */
 	public static final Integer IDLE_TIME_OUT_MS = 60000;
@@ -116,6 +116,7 @@ public class CommonConstants {
 	public static final int DEFAULT_PAGE_NO = 1;
 	public static final String SECRET_KEY = "com.aes.bouncy.secret.key";
 	public static final String PROTO_TYPE = "prototype";
+	public static final String ID = "id";
 	
 	
 }

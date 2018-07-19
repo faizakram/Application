@@ -34,8 +34,9 @@ public class UserToken implements java.io.Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private Users user;
-	
+	@Column(name = "token")
 	private String token;
+	@Column(name = "last_used")
 	private Date lastUsed;
 	@Column(name = "secret_key")
 	private byte[] secretKey;

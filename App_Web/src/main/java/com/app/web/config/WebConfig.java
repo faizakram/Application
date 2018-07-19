@@ -5,12 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.validation.Validator;
@@ -23,7 +24,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.app.util.constant.CommonConstants;
 import com.app.util.error.ErrorCodeHelper;
-import com.app.util.reader.PropertyReader;
 import com.app.util.request.SearchDTO;
 import com.app.web.config.interceptor.AuthenticationInterceptor;
 import com.app.web.config.interceptor.AuthorizationInterceptor;
@@ -45,11 +45,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc
 @EnableSwagger2
 @ComponentScan(basePackages = { CommonConstants.BASE_PACKAGE })
+@PropertySource({ CommonConstants.ERROR_PROPERTIES, CommonConstants.SUCCESS_PROPERTIES,
+		CommonConstants.APPLICATION_PROPERTIES_FILENAME })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
-	private PropertyReader propertyReader;
+	private Environment propertyReader;
 
 	/**
 	 * Bean to handle Authentication Interceptor
@@ -108,22 +109,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	 * createCommonsMultipartResolver() { return new CommonsMultipartResolver(); }
 	 */
 
-	@Bean(name = CommonConstants.APPLICATION_PROPERTY_READER)
-	public PropertyReader propertReader() {
-		return new PropertyReader(CommonConstants.APPLICATION_PROPERTIES_FILENAME);
-	}
-
-	/* Error Property File Reader */
-	@Bean(name = CommonConstants.ERROR_PROPERTY)
-	public PropertyReader errorPropertyReader() {
-		return new PropertyReader(CommonConstants.ERROR_PROPERTIES);
-	}
-
-	/* Success Property File Reader */
-	@Bean(name = CommonConstants.SUCCESS_PROPERTY)
-	public PropertyReader sucessPropertyReader() {
-		return new PropertyReader(CommonConstants.SUCCESS_PROPERTIES);
-	}
+	
 
 	@Bean(name = CommonConstants.ERROR_CODE_HELPER)
 	public ErrorCodeHelper errorCodeHelper() {
@@ -136,6 +122,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	 * @return
 	 */
 	@Bean
+	@Autowired
 	public Docket api() {
 		List<Parameter> newArrayList = new ArrayList<>(Arrays.asList((Parameter) new ParameterBuilder()
 				.name(CommonConstants.X_AUTH_TOKEN).description(CommonConstants.REQUEST_VALIDATE)
@@ -159,7 +146,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
 	public MessageSource messageSource() {
 		ReloadableResourceBundleMessageSource bean = new ReloadableResourceBundleMessageSource();
-		bean.setBasename(CommonConstants.CLASSPATH_SYSTEM_PROPERTIES);
+		bean.setBasename(CommonConstants.CLASSPATH_MESSAGES_PROPERTIES);
 		bean.setDefaultEncoding("UTF-8");
 		return bean;
 	}
@@ -171,10 +158,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		bean.setValidationMessageSource(messageSource());
 		return bean;
 	}
-	
+
 	@Bean
 	public SearchDTO getSearchDTOBean() {
-	return new SearchDTO();
+		return new SearchDTO();
 	}
 	/**/
 }

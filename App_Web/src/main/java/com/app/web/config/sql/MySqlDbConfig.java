@@ -6,15 +6,14 @@ import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.app.util.constant.CommonConstants;
-import com.app.util.reader.PropertyReader;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -22,10 +21,12 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 public class MySqlDbConfig {
 
-	@Autowired
-	@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER)
-	private PropertyReader propertyReader;
+
     
+	@Autowired
+	private Environment propertyReader;
+	
+	
     private DataSource datasource;
 	
 	@Bean

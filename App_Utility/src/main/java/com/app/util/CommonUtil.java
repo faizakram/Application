@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +29,16 @@ public class CommonUtil {
         
     }
 
+    
+    /**
+     * Checking whether token has expired
+     * @param lastUsed
+     * @return boolean
+     */
+    public static boolean isTokenExpired(Date lastUsed) {
+    	return lastUsed.getTime() + 300 * (60 * 1000L) < DateUtil.getCurrentTimestampInUTC().getTime();
+    }
+    
     /**
      * get corresponding map key for map value
      * 

@@ -9,29 +9,23 @@ import org.bouncycastle.crypto.paddings.PKCS7Padding;
 import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import com.app.util.constant.CommonConstants;
-import com.app.util.reader.PropertyReader;
 
 @Component
 public class AESBouncyCastleUtil {
     
     
-    private PropertyReader systemPropertyReader;
-    
+    private Environment systemPropertyReader;
     private BlockCipher AESCipher;
-    
     private PaddedBufferedBlockCipher pbbc;
-    
     private KeyParameter key;
     
     @Autowired
-    public AESBouncyCastleUtil(@Qualifier(CommonConstants.APPLICATION_PROPERTY_READER) PropertyReader systemPropertyReader){
-        
+    public AESBouncyCastleUtil(Environment systemPropertyReader){
         this.systemPropertyReader = systemPropertyReader;
-        
         AESCipher = new AESEngine();
         pbbc = new PaddedBufferedBlockCipher(AESCipher, new PKCS7Padding());
         SecretKey sk = new SecretKeySpec(this.systemPropertyReader.getProperty(CommonConstants.SECRET_KEY).getBytes(), "AES");

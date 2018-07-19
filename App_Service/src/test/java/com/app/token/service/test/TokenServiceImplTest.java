@@ -1,6 +1,5 @@
 package com.app.token.service.test;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.security.Key;
@@ -54,22 +53,7 @@ public class TokenServiceImplTest {
 		assertNotNull(tokenServiceImpl.generateUserToken(user));
 	}
 
-	@Test
-	public void isTokenExpiredTest() {
-		assertEquals(false, tokenServiceImpl.isTokenExpired(new Date()));
-	}
 
-	@Test
-	public void isTokenExpiredTest2() {
-		assertEquals(true, tokenServiceImpl.isTokenExpired(update_Date()));
-	}
 	
-	private Date update_Date()
-	{
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(new Date());
-		cal.add(Calendar.MINUTE, -301);
-		return cal.getTime();
-	}
 
 }

@@ -1,8 +1,10 @@
 package com.app.auth.service;
 
+import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.app.login.dao.LoginDAOInterFace;
@@ -10,6 +12,11 @@ import com.app.model.UserToken;
 import com.app.model.Users;
 import com.app.token.service.TokenService;
 import com.app.token.service.UserTokenService;
+import com.app.util.CommonUtil;
+import com.app.util.constant.CommonConstants;
+import com.app.util.error.ErrorCodeHelper;
+import com.app.util.error.response.ErrorInfo;
+import com.app.util.error.response.ServiceException;
 import com.app.util.request.LoginReq;
 
 /**
@@ -19,7 +26,7 @@ import com.app.util.request.LoginReq;
 @Service
 @Transactional
 public class AuthenticationServiceImpl implements AuthenticationService {
-	
+
 	@Autowired
 	private TokenService tokenService;
 
@@ -28,6 +35,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 	@Autowired
 	private UserTokenService userTokenService;
 
+	@Autowired
+	private ErrorCodeHelper errorCodeHelper;
 
 	/**
 	 * Authenticate Users By rhId and userMailid Generate token Store Token In
@@ -45,8 +54,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		user = loginDAO.findUserByEmailPassword(loginReq.getUserEmail(), loginReq.getUserCredential());
 
 		if (user == null) {
-			// create custom exception and throw
-			return "password missing";
+			ErrorInfo errorInfo = errorCodeHelper.getErrorInfo(CommonConstants.E1010_ERROR_CODE,
+					CommonConstants.E1010_ERROR_DESCRIPTION);
+			throw new ServiceException(errorInfo, HttpStatus.UNAUTHORIZED);
 		}
 
 		UserToken userToken = userTokenService.findTokenByUser(user.getId());
@@ -54,15 +64,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		if (userToken == null) {
 			userToken = tokenService.generateUserToken(user);
 			userTokenService.storeTokenInDB(userToken);
-		} else if (tokenService.isTokenExpired(userToken.getLastUsed())) {
 
-			newToken = tokenService.generateUserToken(user);
+		} else if (CommonUtil.isTokenExpired(userToken.getLastUsed())) {
+
+			newToken = tokenService.generateUserToken(userToken);
 			userToken.setLastUsed(newToken.getLastUsed());
 			userToken.setToken(newToken.getToken());
 			userToken.setSecretKey(newToken.getSecretKey());
 			userTokenService.updateToken(userToken);
 		}
-		
+
 		return userToken.getToken();
 	}
 

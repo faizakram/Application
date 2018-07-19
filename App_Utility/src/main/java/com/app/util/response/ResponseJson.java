@@ -1,14 +1,13 @@
 package com.app.util.response;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.app.util.constant.CommonConstants;
-import com.app.util.reader.PropertyReader;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -20,9 +19,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 public class ResponseJson{
 
 
+
 	@Autowired
-	@Qualifier(CommonConstants.SUCCESS_PROPERTY)
-	private PropertyReader successProperty;
+	private Environment successProperty;
 
 	private String responseCode;
 

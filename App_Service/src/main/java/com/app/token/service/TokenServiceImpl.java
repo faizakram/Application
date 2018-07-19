@@ -3,7 +3,6 @@ package com.app.token.service;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -15,18 +14,18 @@ import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.app.model.Roles;
 import com.app.model.UserToken;
 import com.app.model.Users;
+import com.app.util.CommonUtil;
+import com.app.util.DateUtil;
 import com.app.util.constant.CommonConstants;
 import com.app.util.error.ErrorCodeHelper;
 import com.app.util.error.response.ErrorInfo;
 import com.app.util.error.response.ServiceException;
-import com.app.util.reader.PropertyReader;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -43,8 +42,6 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 @Transactional
 public class TokenServiceImpl implements TokenService {
 
-	@Resource(name = CommonConstants.APPLICATION_PROPERTY_READER)
-    private PropertyReader appPropertyReader;
 	
     @Resource(name = CommonConstants.ERROR_CODE_HELPER)
     private ErrorCodeHelper errorCodeHelper;
@@ -71,12 +68,22 @@ public class TokenServiceImpl implements TokenService {
         UserToken token = new UserToken();
         token.setToken(Jwts.builder().setClaims(claims)
             .signWith(SignatureAlgorithm.HS512, secret).compact());
-        token.setLastUsed(new Date());
+        token.setLastUsed(DateUtil.getCurrentTimestampInUTC());
         token.setUser(user);
         token.setSecretKey(secret.getEncoded());
         return token;
     }
     
+    @Override
+	public UserToken generateUserToken(UserToken userToken) {
+    	 Claims claims = Jwts.claims().setSubject(String.valueOf(userToken.getUser().getId()));
+         claims.put("CLAIM_TOKEN_VERSION", getRandomToken());
+         userToken.setToken(Jwts.builder().setClaims(claims)
+             .signWith(SignatureAlgorithm.HS512, secret).compact());
+         userToken.setLastUsed(DateUtil.getCurrentTimestampInUTC());
+         userToken.setSecretKey(secret.getEncoded());
+         return userToken;
+	}
     /**
      * Generates random key
      * 
@@ -118,11 +125,11 @@ public class TokenServiceImpl implements TokenService {
                         CommonConstants.E1010_ERROR_DESCRIPTION);
                     throw new ServiceException(errorInfo, HttpStatus.UNAUTHORIZED);
           }
-            if (!isTokenExpired(userToken.getLastUsed())) {
+            if (!CommonUtil.isTokenExpired(userToken.getLastUsed())) {
                 secretKey = new SecretKeySpec(userToken.getSecretKey(), SignatureAlgorithm.HS512.getJcaName());
                 userMailid = userToken.getUser().getUserProfile().getUserEmailId();
                 id=userToken.getUser().getId();
-                userToken.setLastUsed(new Date());
+                userToken.setLastUsed(DateUtil.getCurrentTimestampInUTC());
                 userToken.setSecretKey(secretKey.getEncoded());
             }else{
                 
@@ -170,14 +177,7 @@ public class TokenServiceImpl implements TokenService {
 
     }
 
-    /**
-     * Checking whether token has expired
-     * @param lastUsed
-     * @return boolean
-     */
-    @Override
-    public boolean isTokenExpired(Date lastUsed) {
-    	return lastUsed.getTime() + 300 * (60 * 1000L) < System.currentTimeMillis();
-    }
+	
+
        
 }

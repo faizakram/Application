@@ -31,12 +31,7 @@ public interface TokenService {
      */
     public Map<String, Object> parseUserToken(String token);
 
-    /**
-     * checks if token is expired or not
-     * 
-     * @param lastUsed
-     * @return boolean
-     */
-    public boolean isTokenExpired(Date lastUsed);
+	public UserToken generateUserToken(UserToken userToken);
+
 
 }

@@ -1,12 +1,10 @@
 package com.app.util.error;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 
-import com.app.util.constant.CommonConstants;
 import com.app.util.error.response.ErrorInfo;
 import com.app.util.error.response.ErrorMessage;
-import com.app.util.reader.PropertyReader;
 
 /**
  * To provide http error code and regarding description
@@ -14,19 +12,20 @@ import com.app.util.reader.PropertyReader;
  */
 public class ErrorCodeHelper {
 
-    @Autowired
-    @Qualifier(CommonConstants.ERROR_PROPERTY)
-    private PropertyReader errorPropertyReader;
 
     @Autowired
     private  ErrorInfo errorInfo;
+    
+    @Autowired
+	private Environment errorPropertyReader;
+    
     /**
      * Get Error info and set error code and error description
      * @param httpErrorCode
      * @param httpErrorDescription
      * @return ErrorInfo
      */
-    public ErrorInfo getErrorInfo(String httpErrorCode, String httpErrorDescription) {    
+    public ErrorInfo getErrorInfo(String httpErrorCode, String httpErrorDescription) { 
         String responseCode = errorPropertyReader.getProperty(httpErrorCode);
         String responseDescription = errorPropertyReader.getProperty(httpErrorDescription);
         //ErrorInfo errorInfo = new ErrorInfo();

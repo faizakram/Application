@@ -4,7 +4,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
-
 public class LoginReq {
 	@NotEmpty 
 	@Email(message ="{NotEmpty.user.email}")
@@ -24,7 +23,4 @@ public class LoginReq {
 	public void setUserCredential(String userCredential) {
 		this.userCredential = userCredential;
 	}
-	
-	
-
 }

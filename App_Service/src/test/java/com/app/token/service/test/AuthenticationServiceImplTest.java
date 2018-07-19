@@ -13,6 +13,7 @@ import com.app.model.UserToken;
 import com.app.model.Users;
 import com.app.token.service.TokenService;
 import com.app.token.service.UserTokenService;
+import com.app.util.CommonUtil;
 import com.app.util.request.LoginReq;
 
 import mockit.Expectations;
@@ -91,7 +92,7 @@ public class AuthenticationServiceImplTest {
                 result = user;
                 userTokenService.findTokenByUser(user.getId());
                 result = newToken;
-                tokenService.isTokenExpired(newToken.getLastUsed());
+                CommonUtil.isTokenExpired(newToken.getLastUsed());
                 result= true;
                 tokenService.generateUserToken(user);
                 result = userToken;
