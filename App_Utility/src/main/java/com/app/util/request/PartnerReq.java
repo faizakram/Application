@@ -1,4 +1,4 @@
-package com.app.util.response;
+package com.app.util.request;
 
 import java.util.Date;
 
