@@ -64,7 +64,6 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 				Map<String, Object> userDetail = tokenService.parseUserToken(token);
 				Long userId = (Long) userDetail.get(CommonConstants.USER_ID);
 				if (userId != null && userId != 0) {
-
 					roles = (Set<String>) userDetail.get(CommonConstants.ROLES);
 					request.setAttribute(CommonConstants.ROLES, roles);
 					request.setAttribute(CommonConstants.USER_EMAIL_TXT,

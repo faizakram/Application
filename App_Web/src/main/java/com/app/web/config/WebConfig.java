@@ -104,12 +104,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.ALL);
 	}
 
-	/*
-	 * @Bean(name ="multipartResolver") public CommonsMultipartResolver
-	 * createCommonsMultipartResolver() { return new CommonsMultipartResolver(); }
-	 */
-
-	
 
 	@Bean(name = CommonConstants.ERROR_CODE_HELPER)
 	public ErrorCodeHelper errorCodeHelper() {
