@@ -40,26 +40,18 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	 * @param handler
 	 * @return true if user is authenticated
 	 */
-	@SuppressWarnings({ "unused", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
 		String token = request.getHeader(CommonConstants.HEADER_TOKEN);
-
-		String userMailidToken;
 		Set<String> roles;
-
 		if (handler instanceof HandlerMethod) {
-
 			if (token == null) {
-
 				ErrorInfo errorInfo = errorCodeHelper.getErrorInfo(CommonConstants.E1009_ERROR_CODE,
 						CommonConstants.E1009_ERROR_DESCRIPTION);
 				throw new ServiceException(errorInfo, HttpStatus.UNAUTHORIZED);
-			}
-
-			else {
+			} else {
 
 				Map<String, Object> userDetail = tokenService.parseUserToken(token);
 				Long userId = (Long) userDetail.get(CommonConstants.USER_ID);
@@ -69,15 +61,11 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 					request.setAttribute(CommonConstants.USER_EMAIL_TXT,
 							userDetail.get(CommonConstants.USER_EMAIL_TXT));
 					request.setAttribute(CommonConstants.USER_ID, userId);
-
 					return true;
-
 				}
-
 			}
 			return false;
 		}
-
 		return true;
 	}
 }
