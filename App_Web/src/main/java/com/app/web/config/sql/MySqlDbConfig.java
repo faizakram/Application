@@ -41,22 +41,18 @@ public class MySqlDbConfig {
 	    
 	    @Bean
 	    public DataSource dataSource() {
-
 	        if (datasource == null) {
 	            HikariConfig config = new HikariConfig();
-
 	            config.setJdbcUrl(propertyReader.getProperty(CommonConstants.JDBC_URL));
 	            config.setUsername(propertyReader.getProperty(CommonConstants.JDBC_USERNAME));
 	            config.setPassword(propertyReader.getProperty(CommonConstants.JDBC_CREDENTIAL));
-
 	            /*Changes Related to Database Connection Issue*/
 	            config.setIdleTimeout(CommonConstants.IDLE_TIME_OUT_MS);
 	            config.setConnectionTimeout(CommonConstants.CONNECTION_TIME_OUT);
 	            config.setValidationTimeout(CommonConstants.VALIDATION_TIME_OUT);
 	            config.setMaxLifetime(CommonConstants.MAX_LIFE_TIME);
 	            /*Database Connection Issue Done Here*/
-	            
-	            config.setMaximumPoolSize(CommonConstants.TEN);
+	            config.setMaximumPoolSize(CommonConstants.MAXIMUM_POOL_SIZE);
 	            config.setAutoCommit(false);
 	            config.addDataSourceProperty(CommonConstants.CACHE_PREP_STMTS,
 	            		propertyReader.getProperty(CommonConstants.HIBERNATE_CACHEPREPSTMTS));
@@ -66,7 +62,6 @@ public class MySqlDbConfig {
 	            		propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESQLLIMIT));
 	            config.addDataSourceProperty(CommonConstants.USE_SERVER_PREP_STMTS,
 	            		propertyReader.getProperty(CommonConstants.HIBERNATE_USESERVERPREPSTMTS));
-
 	            datasource = new HikariDataSource(config);
 	        }
 	        return datasource;

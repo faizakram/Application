@@ -40,12 +40,7 @@ public class LoginController {
 	 * @param loginDetails
 	 * @return
 	 */
-	/*@ApiImplicitParams({
-    @ApiImplicitParam(name = "name", value = "User's name", required = true, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "email", value = "User's email", required = false, dataType = "string", paramType = "query"),
-    @ApiImplicitParam(name = "id", value = "User ID", required = true, dataType = "long", paramType = "query")
-  })*/
-//@PathParam(value = "User's name")
+
 	@RequestMapping(value = CommonConstants.TOKEN_CREATION , method = RequestMethod.POST)
 	public ResponseJson tokenCreation(@Valid @RequestBody LoginReq loginReq) {
 		response.setResponse(authenticationService.authenticateUser(loginReq));

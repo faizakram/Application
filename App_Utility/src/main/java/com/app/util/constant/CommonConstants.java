@@ -5,9 +5,11 @@ public class CommonConstants {
 	public static final String DISPATCHER = "dispatcher";
 	public static final String SLAH = "/";
 	public static final Integer ONE = 1;
-	public static final Integer TEN = 10;
+	
 	public static final String APPLICATION_PROPERTY_READER = "ApplicationProperty";
 	public static final String APPLICATION_PROPERTIES_FILENAME = "classpath:application.properties";
+    
+	/*============================== Hibernate Configuration =========================*/
 	public static final String MODEL_PACKAGE = "com.app.model";
 	public static final String QUERY_PROPERTIES = "classpath:query.properties";
 	public static final String JDBC_URL = "jdbc.url";
@@ -17,6 +19,20 @@ public class CommonConstants {
 	public static final String HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	public static final String HIBERNATE_FORMAT_SQL = "hibernate.format_sql";
 	public static final String HIBERNATE_HBM2DDL_AUTO = "hibernate.hbm2ddl.auto";
+	/*============================== Hikari Connection Pulling Configuration =========================*/
+	public static final Integer IDLE_TIME_OUT_MS = 60000;
+	public static final Integer CONNECTION_TIME_OUT = 60000;
+	public static final Integer VALIDATION_TIME_OUT = 30000;
+	public static final Integer MAX_LIFE_TIME = 60000;
+	public static final Integer MAXIMUM_POOL_SIZE = 10;
+	public static final String CACHE_PREP_STMTS = "cachePrepStmts";
+	public static final String PREP_STMT_CACHE_SIZE = "prepStmtCacheSize";
+	public static final String PREP_STMT_CACHE_SQL_LIMIT = "prepStmtCacheSqlLimit";
+	public static final String USE_SERVER_PREP_STMTS = "useServerPrepStmts";
+	public static final String HIBERNATE_CACHEPREPSTMTS = "hibernate.hikari.dataSource.cachePrepStmts";
+	public static final String HIBERNATE_PREPSTMTCACHESIZE = "hibernate.hikari.dataSource.prepStmtCacheSize";
+	public static final String HIBERNATE_PREPSTMTCACHESQLLIMIT = "hibernate.hikari.dataSource.prepStmtCacheSqlLimit";
+	public static final String HIBERNATE_USESERVERPREPSTMTS = "hibernate.hikari.dataSource.useServerPrepStmts";
 
 	public static final String DISPATCHOPTIONSREQUEST = "dispatchOptionsRequest";
 	public static final String TRUETXT = "true";
@@ -87,21 +103,12 @@ public class CommonConstants {
 	
 	
 
-	public static final String CACHE_PREP_STMTS = "cachePrepStmts";
-	public static final String PREP_STMT_CACHE_SIZE = "prepStmtCacheSize";
-	public static final String PREP_STMT_CACHE_SQL_LIMIT = "prepStmtCacheSqlLimit";
-	public static final String USE_SERVER_PREP_STMTS = "useServerPrepStmts";
-	public static final String HIBERNATE_CACHEPREPSTMTS = "hibernate.hikari.dataSource.cachePrepStmts";
-	public static final String HIBERNATE_PREPSTMTCACHESIZE = "hibernate.hikari.dataSource.prepStmtCacheSize";
-	public static final String HIBERNATE_PREPSTMTCACHESQLLIMIT = "hibernate.hikari.dataSource.prepStmtCacheSqlLimit";
-	public static final String HIBERNATE_USESERVERPREPSTMTS = "hibernate.hikari.dataSource.useServerPrepStmts";
+	
+	
 	public static final String CLASSPATH_MESSAGES_PROPERTIES = "classpath:messages";
 	
 	/* Changes Related to Database Connection Issue */
-	public static final Integer IDLE_TIME_OUT_MS = 60000;
-	public static final Integer CONNECTION_TIME_OUT = 60000;
-	public static final Integer VALIDATION_TIME_OUT = 30000;
-	public static final Integer MAX_LIFE_TIME = 60000;
+	
 	/* Database Connection Issue Done Here */
 	
 	public static final String DAYS = "DAYS";
