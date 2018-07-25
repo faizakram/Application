@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 
@@ -43,7 +44,6 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	public void update(T entity) {
 		getSession().update(entity);
 	}
-
 	public void delete(T entity) {
 		getSession().delete(entity);
 	}
@@ -51,23 +51,25 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 	protected Criteria createEntityCriteria() {
 		return getSession().createCriteria(persistentClass);
 	}
+	
+	public Long getCount()
+	{
+		Criteria criteriaCount = getSession().createCriteria(persistentClass);
+		criteriaCount.setProjection(Projections.rowCount());
+		return (Long)criteriaCount.uniqueResult();
+	}
 	/*for Example */
 	@SuppressWarnings("unchecked")
 	public List<Object> findAllActiveBlog(Integer pageIndex, Integer pageSize, String name) {
 		try {
 			Query query = sessionFactory.getCurrentSession().createQuery("From Blog where name =:name order by blogDateTime desc");
-			
 			query.setString("name", name);
-			
 			query.setFirstResult((pageIndex - 1) * pageSize);
 			query.setMaxResults(pageSize);
-			
 			if (query.list() == null || query.list().isEmpty()) {
 				return null;
 			}
-			
 			return query.list();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
