@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>App</groupId>
@@ -77,6 +78,13 @@
 			<artifactId>commons-io</artifactId>
 			<version>${org.apache.commons.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.retry</groupId>
 			<artifactId>spring-retry</artifactId>
@@ -97,7 +105,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>		
+		</dependency>
 
 		<!-- MySQL -->
 		<dependency>
@@ -195,7 +203,7 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>${springfox-swagger2.version}</version>
 		</dependency>
-	
+
 		<!-- https://mvnrepository.com/artifact/com.sun.jersey/jersey-bundle -->
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
