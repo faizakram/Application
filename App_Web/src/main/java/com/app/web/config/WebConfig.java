@@ -16,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -72,6 +73,16 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		return new AuthorizationInterceptor();
 	}
 
+	// CommonsMultipartResolver
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		resolver.setMaxInMemorySize(50000000);
+		resolver.setDefaultEncoding("utf-8");
+		return resolver;
+	}
+
+	
 	/**
 	 * register interceptors
 	 * 
@@ -103,7 +114,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
 		configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.ALL);
 	}
-
 
 	@Bean(name = CommonConstants.ERROR_CODE_HELPER)
 	public ErrorCodeHelper errorCodeHelper() {

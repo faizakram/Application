@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import com.app.util.constant.CommonConstants;
 import com.app.util.error.ErrorCodeHelper;
 import com.app.util.request.LoginReq;
 import com.app.util.request.SearchDTO;
+import com.app.util.request.UserDataForm;
 import com.app.util.response.ResponseJson;
 
 @RestController
@@ -49,9 +51,13 @@ public class LoginController {
 	
 	@RequestMapping(value = CommonConstants.USER_DETAILS , method = RequestMethod.GET)
 	public ResponseJson getInfo(@PathVariable Integer id, SearchDTO loginReq) {
-		
-		
 		response.setResponse(id + "Class Info" + loginReq);
+		return response;
+	}
+	
+	@RequestMapping(value = "userInfoTest" , method = RequestMethod.POST)
+	public ResponseJson getInfo(@ModelAttribute UserDataForm user) {
+		response.setResponse("Class Info" + user);
 		return response;
 	}
 	
