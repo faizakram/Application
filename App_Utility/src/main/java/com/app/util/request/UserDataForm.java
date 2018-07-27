@@ -1,11 +1,13 @@
 package com.app.util.request;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class UserDataForm {
 	
 	private String name;
-	private MultipartFile file;
+	private List<MultipartFile> file;
 	
 	public String getName() {
 		return name;
@@ -13,10 +15,10 @@ public class UserDataForm {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public MultipartFile getFile() {
+	public List<MultipartFile> getFile() {
 		return file;
 	}
-	public void setFile(MultipartFile file) {
+	public void setFile(List<MultipartFile> file) {
 		this.file = file;
 	}
 	@Override

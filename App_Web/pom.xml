@@ -1,16 +1,18 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>App</groupId>
-    <artifactId>App</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>App_Web</groupId>
-  <artifactId>App_Web</artifactId>
-  <packaging>war</packaging>
-  <name>Spring Controller and Configuration Layer</name>
-  <description>Spring Controller and Configuration Layer</description>
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>App</groupId>
+		<artifactId>App</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<groupId>App_Web</groupId>
+	<artifactId>App_Web</artifactId>
+	<packaging>war</packaging>
+	<name>Spring Controller and Configuration Layer</name>
+	<description>Spring Controller and Configuration Layer</description>
+	<properties>
 		<App_Utility.version>0.0.1-SNAPSHOT</App_Utility.version>
 		<App_Service.version>0.0.1-SNAPSHOT</App_Service.version>
 
@@ -26,29 +28,30 @@
 			<artifactId>App_Service</artifactId>
 			<version>${App_Service.version}</version>
 		</dependency>
+
 	</dependencies>
-  <build>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.4</version>
-					<configuration>
-						<warSourceDirectory>target</warSourceDirectory>
-						<warName>Spring_Web_App</warName>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
-					</configuration>
-				</plugin>
-			</plugins>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warSourceDirectory>target</warSourceDirectory>
+					<warName>Spring_Web_App</warName>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
 		<finalName>Spring_Web_App</finalName>
 	</build>
 </project>

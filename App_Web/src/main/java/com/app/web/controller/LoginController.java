@@ -55,6 +55,7 @@ public class LoginController {
 		return response;
 	}
 	
+	/*you can also remove @ModelAttribute that works same*/
 	@RequestMapping(value = "userInfoTest" , method = RequestMethod.POST)
 	public ResponseJson getInfo(@ModelAttribute UserDataForm user) {
 		response.setResponse("Class Info" + user);
