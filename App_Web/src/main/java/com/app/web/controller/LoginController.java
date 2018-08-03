@@ -5,12 +5,14 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.app.auth.service.AuthenticationService;
 import com.app.util.constant.CommonConstants;
@@ -37,12 +39,15 @@ public class LoginController {
 	@Autowired
 	private ResponseJson response;
 	
+	@Autowired
+	private RestTemplate restTempalte;
 	/**
 	 * For Token Creation 
 	 * @param loginDetails
 	 * @return
 	 */
 
+	
 	@RequestMapping(value = CommonConstants.TOKEN_CREATION , method = RequestMethod.POST)
 	public ResponseJson tokenCreation(@Valid @RequestBody LoginReq loginReq) {
 		response.setResponse(authenticationService.authenticateUser(loginReq));
@@ -63,5 +68,14 @@ public class LoginController {
 	}
 	
 	
+	@RequestMapping(value = "abc" , method = RequestMethod.GET)
+	public ResponseEntity<String> getInfo() {
+		LoginReq loginReq = new LoginReq();
+		loginReq.setUserEmail("faiz.krm@gmail.com");
+		loginReq.setUserCredential("12345678");
+		ResponseEntity<String> response = restTempalte.postForEntity("http://localhost:8080/Spring_Web_App/web/token/v3/creation", loginReq, String.class);
+		
+		return response;
+	}
 	
 }
