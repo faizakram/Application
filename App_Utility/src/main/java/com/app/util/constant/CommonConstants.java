@@ -33,6 +33,22 @@ public class CommonConstants {
 	public static final String HIBERNATE_PREPSTMTCACHESIZE = "hibernate.hikari.dataSource.prepStmtCacheSize";
 	public static final String HIBERNATE_PREPSTMTCACHESQLLIMIT = "hibernate.hikari.dataSource.prepStmtCacheSqlLimit";
 	public static final String HIBERNATE_USESERVERPREPSTMTS = "hibernate.hikari.dataSource.useServerPrepStmts";
+	
+	/*============================== HTTP Client Connection Pulling Configuration =========================*/
+	
+    // Determines the timeout in milliseconds until a connection is established.
+	public static final int CONNECT_TIMEOUT = 30000;
+    // Returns the timeout in milliseconds used when requesting a connection from the connection manager.
+	public static final int REQUEST_TIMEOUT = 30000;
+    // Defines the socket timeout (SO_TIMEOUT) in milliseconds, which is the timeout for waiting for data or,
+    // put differently, a maximum period inactivity between two consecutive data packets).
+	public static final int SOCKET_TIMEOUT = 60000;
+
+	public static final int MAX_TOTAL_CONNECTIONS = 20;
+	public static final int ONE_SECOND_IN_MILLIS = 1000;
+	public static final int DEFAULT_KEEP_ALIVE_TIME_MILLIS = 5 * ONE_SECOND_IN_MILLIS;
+	public static final int CLOSE_IDLE_CONNECTION_WAIT_TIME_SECS = 30;
+
 
 	public static final String DISPATCHOPTIONSREQUEST = "dispatchOptionsRequest";
 	public static final String TRUETXT = "true";
