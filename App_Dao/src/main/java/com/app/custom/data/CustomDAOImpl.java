@@ -8,7 +8,7 @@ import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.app.util.response.UserData;
+import com.app.util.dto.UserData;
 @Repository
 public class CustomDAOImpl implements CustomDAO {
 

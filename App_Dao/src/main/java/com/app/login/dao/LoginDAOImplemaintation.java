@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.model.Roles;
 import com.app.model.UserProfile;
+import com.app.model.User_Test;
 import com.app.model.Users;
 
 @Repository
@@ -168,6 +169,11 @@ public class LoginDAOImplemaintation implements LoginDAOInterFace {
 		query.setString("password", userCredentail);
 		logger.info(LoginDAOImplemaintation.class.getMethods());
 		return (Users) query.uniqueResult();
+	}
+
+	@Override
+	public void addUser(User_Test userTest) {
+		sessionFactory.getCurrentSession().save(userTest);
 	}
 
 }

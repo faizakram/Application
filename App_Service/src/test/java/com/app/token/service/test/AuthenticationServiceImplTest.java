@@ -2,8 +2,6 @@ package com.app.token.service.test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,8 +11,10 @@ import com.app.model.UserToken;
 import com.app.model.Users;
 import com.app.token.service.TokenService;
 import com.app.token.service.UserTokenService;
-import com.app.util.CommonUtil;
-import com.app.util.request.LoginReq;
+import com.app.util.DateUtil;
+import com.app.util.dto.LoginReq;
+import com.app.util.error.ErrorCodeHelper;
+import com.app.util.error.response.ServiceException;
 
 import mockit.Expectations;
 import mockit.Injectable;
@@ -34,6 +34,9 @@ public class AuthenticationServiceImplTest {
 	@Injectable
 	private UserTokenService userTokenService;
 	
+	@Injectable
+	private ErrorCodeHelper errorCodeHelper;
+	
 	
 	private LoginReq loginReq;
 	private Users user;
@@ -50,15 +53,15 @@ public class AuthenticationServiceImplTest {
 		newToken = new UserToken();
 		newToken.setId(1);
 		newToken.setToken("abc");
-		newToken.setLastUsed(new Date());
+		newToken.setLastUsed(DateUtil.addDaysToDate(DateUtil.getCurrentTimestampInUTC(), -1));
 		userToken = new UserToken();
 		userToken.setId(1);
-		userToken.setLastUsed(new Date());
+		userToken.setLastUsed(DateUtil.addDaysToDate(DateUtil.getCurrentTimestampInUTC(), -1));
 		userToken.setSecretKey(new byte[20]);
 		userToken.setToken("abc");
 	}
 	
-	@Test
+	@Test(expected = ServiceException.class)
     public void passwordMissmatch() {
         new Expectations() {
             {
@@ -92,9 +95,7 @@ public class AuthenticationServiceImplTest {
                 result = user;
                 userTokenService.findTokenByUser(user.getId());
                 result = newToken;
-                CommonUtil.isTokenExpired(newToken.getLastUsed());
-                result= true;
-                tokenService.generateUserToken(user);
+                tokenService.generateUserToken(newToken);
                 result = userToken;
             }
         };

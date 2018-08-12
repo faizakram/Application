@@ -2,6 +2,7 @@ package com.app.login.dao;
 
 import com.app.model.Roles;
 import com.app.model.UserProfile;
+import com.app.model.User_Test;
 import com.app.model.Users;
 
 public interface LoginDAOInterFace {
@@ -28,5 +29,7 @@ public interface LoginDAOInterFace {
 
 
 	public Users findUserByEmailPassword(String userEmail, String userCredentail);
+
+	public void addUser(User_Test userTest);
 
 }

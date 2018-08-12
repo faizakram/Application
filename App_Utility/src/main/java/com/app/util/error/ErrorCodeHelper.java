@@ -1,8 +1,12 @@
 package com.app.util.error;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
+
+import com.app.util.constant.CommonConstants;
 import com.app.util.error.response.ErrorInfo;
 import com.app.util.error.response.ErrorMessage;
 
@@ -10,6 +14,8 @@ import com.app.util.error.response.ErrorMessage;
  * To provide http error code and regarding description
  *
  */
+@Component
+@PropertySource({ CommonConstants.ERROR_PROPERTIES})
 public class ErrorCodeHelper {
 
 

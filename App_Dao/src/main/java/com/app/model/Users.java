@@ -35,7 +35,7 @@ public class Users implements java.io.Serializable {
 	private UserProfile userProfile;
 	private String password;
 	private boolean enable;
-	//private UserToken userToken;
+	private UserToken userToken;
 	private Set<Roles> roleses = new HashSet<Roles>(0);
 	
 	public Users() {
@@ -91,5 +91,13 @@ public class Users implements java.io.Serializable {
 	public void setRoleses(Set<Roles> roleses) {
 		this.roleses = roleses;
 	}
-
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+	public UserToken getUserToken() {
+		return userToken;
+	}
+	public void setUserToken(UserToken userToken) {
+		this.userToken = userToken;
+	}
+	
 }

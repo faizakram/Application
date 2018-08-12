@@ -1,4 +1,4 @@
-package com.app.util.response;
+package com.app.util.dto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

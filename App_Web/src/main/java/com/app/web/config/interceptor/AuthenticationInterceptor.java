@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -29,7 +28,6 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter {
 	private TokenService tokenService;
 
 	@Autowired
-	@Qualifier(CommonConstants.ERROR_CODE_HELPER)
 	private ErrorCodeHelper errorCodeHelper;
 
 	/**

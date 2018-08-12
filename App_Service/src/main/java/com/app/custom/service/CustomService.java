@@ -2,7 +2,7 @@ package com.app.custom.service;
 
 import java.util.List;
 
-import com.app.util.response.UserData;
+import com.app.util.dto.UserData;
 
 public interface CustomService {
 

@@ -27,8 +27,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.app.util.constant.CommonConstants;
-import com.app.util.error.ErrorCodeHelper;
-import com.app.util.request.SearchDTO;
+import com.app.util.dto.SearchDTO;
 import com.app.web.config.interceptor.AuthenticationInterceptor;
 import com.app.web.config.interceptor.AuthorizationInterceptor;
 import com.app.web.config.interceptor.CORSInterceptor;
@@ -49,7 +48,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebMvc
 @EnableSwagger2
 @ComponentScan(basePackages = { CommonConstants.BASE_PACKAGE })
-@PropertySource({ CommonConstants.ERROR_PROPERTIES, CommonConstants.SUCCESS_PROPERTIES,
+@PropertySource({ CommonConstants.SUCCESS_PROPERTIES,
 		CommonConstants.APPLICATION_PROPERTIES_FILENAME })
 public class WebConfig extends WebMvcConfigurerAdapter {
 
@@ -134,10 +133,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		configurer.ignoreAcceptHeader(true).defaultContentType(MediaType.ALL);
 	}
 
-	@Bean(name = CommonConstants.ERROR_CODE_HELPER)
-	public ErrorCodeHelper errorCodeHelper() {
-		return new ErrorCodeHelper();
-	}
 
 	/**
 	 * Swagger Configuration

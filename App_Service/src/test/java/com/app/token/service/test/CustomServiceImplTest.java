@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import com.app.custom.data.CustomDAO;
 import com.app.custom.service.CustomServiceImpl;
-import com.app.util.response.UserData;
+import com.app.util.dto.UserData;
 
 import mockit.Expectations;
 import mockit.Injectable;

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.custom.service.CustomService;
 import com.app.util.constant.CommonConstants;
 import com.app.util.custom.annotation.AllowedRoles;
-import com.app.util.response.ResponseJson;
+import com.app.util.dto.ResponseJson;
 
 @RestController
 @RequestMapping(CommonConstants.CUSTOM)

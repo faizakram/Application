@@ -1,6 +1,6 @@
 package com.app.auth.service;
 
-import com.app.util.request.LoginReq;
+import com.app.util.dto.LoginReq;
 
 /**
  * Authentication Service Authenticate User And Validate Token

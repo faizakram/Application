@@ -43,7 +43,7 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 public class TokenServiceImpl implements TokenService {
 
 	
-    @Resource(name = CommonConstants.ERROR_CODE_HELPER)
+    @Autowired
     private ErrorCodeHelper errorCodeHelper;
 
     @Autowired
@@ -177,7 +177,6 @@ public class TokenServiceImpl implements TokenService {
 
     }
 
-	
 
        
 }

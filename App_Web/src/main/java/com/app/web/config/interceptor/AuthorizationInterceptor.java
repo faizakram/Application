@@ -36,7 +36,6 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
 
     @Autowired
-    @Qualifier(CommonConstants.ERROR_CODE_HELPER)
     private ErrorCodeHelper errorCodeHelper;
 
     /**

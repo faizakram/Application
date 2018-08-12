@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.app.custom.data.CustomDAO;
 import com.app.object.factory.service.StaticContextHolder;
-import com.app.util.response.UserData;
+import com.app.util.dto.UserData;
 
 @Service
 @Transactional

@@ -22,8 +22,7 @@ public class CORSInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-
-		response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+		response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");// you can validate here
 		response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, HEAD, OPTIONS, PUT, DELETE");
 		response.setHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS,
 				"Content-Type, X-Requested-With,X-Auth-Token, accept,ticket, Origin,Access-Control-Request-Method, Access-Control-Request-Headers");

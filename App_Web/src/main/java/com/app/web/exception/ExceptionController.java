@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,7 +29,6 @@ import com.app.util.error.response.ServiceException;
 public class ExceptionController extends ResponseEntityExceptionHandler {
 
 	@Autowired
-	@Qualifier(CommonConstants.ERROR_CODE_HELPER)
 	private ErrorCodeHelper errorCodeHelper;
 
 	/**
