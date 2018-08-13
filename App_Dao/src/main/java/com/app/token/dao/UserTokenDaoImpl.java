@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.abs.AbstractDao;
 import com.app.model.UserToken;
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 
 /**
  * User Token DAO ORM for UserToken Table

@@ -12,7 +12,7 @@ import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 
 @PropertySource(CommonConstants.QUERY_PROPERTIES)
 public abstract class AbstractDao<PK extends Serializable, T> {

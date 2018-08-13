@@ -7,7 +7,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 
 /**
  * Define allowed roles that can access the class or method

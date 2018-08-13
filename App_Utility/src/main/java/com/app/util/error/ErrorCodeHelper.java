@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.util.error.response.ErrorInfo;
 import com.app.util.error.response.ErrorMessage;
 

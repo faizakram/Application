@@ -9,7 +9,7 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.web.config.sql.MySqlDbConfig;
 
 public class WebAppInitializer implements WebApplicationInitializer{

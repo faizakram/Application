@@ -12,8 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import com.app.util.constant.CommonConstants;
-
 @Component
 public class AESBouncyCastleUtil {
     

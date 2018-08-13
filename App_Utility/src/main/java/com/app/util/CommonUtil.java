@@ -15,9 +15,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import com.app.util.constant.CommonConstants;
-import com.app.util.pojo.PaginationInfo;
-
 /**
  * 
  * Common utility class

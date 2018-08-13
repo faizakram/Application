@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.util.error.ErrorCodeHelper;
 import com.app.util.error.response.ErrorInfo;
 import com.app.util.error.response.ErrorMessage;

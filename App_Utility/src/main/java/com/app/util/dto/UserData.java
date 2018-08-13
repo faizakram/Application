@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 @Component
 @Scope(value = CommonConstants.PROTO_TYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)

@@ -19,7 +19,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.util.custom.annotation.AllowedRoles;
 import com.app.util.error.ErrorCodeHelper;
 import com.app.util.error.response.ErrorInfo;

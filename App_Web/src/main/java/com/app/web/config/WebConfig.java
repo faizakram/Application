@@ -26,7 +26,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.util.dto.SearchDTO;
 import com.app.web.config.interceptor.AuthenticationInterceptor;
 import com.app.web.config.interceptor.AuthorizationInterceptor;

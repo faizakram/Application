@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.app.auth.service.AuthenticationService;
-import com.app.util.constant.CommonConstants;
+import com.app.util.CommonConstants;
 import com.app.util.dto.LoginReq;
 import com.app.util.dto.ResponseJson;
 import com.app.util.dto.SearchDTO;

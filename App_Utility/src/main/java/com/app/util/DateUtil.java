@@ -19,8 +19,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
-import com.app.util.constant.CommonConstants;
-
 /**
  * Date related util
  */

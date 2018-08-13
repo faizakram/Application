@@ -1,4 +1,4 @@
-package com.app.util.constant;
+package com.app.util;
 
 public class CommonConstants {
 	public static final String BASE_PACKAGE = "com.app";
