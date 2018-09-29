@@ -21,14 +21,11 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableTransactionManagement
 public class MySqlDbConfig {
 
-
-    
 	@Autowired
 	private Environment propertyReader;
-	
-	
-    private DataSource datasource;
-	
+
+	private DataSource datasource;
+
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
@@ -37,41 +34,45 @@ public class MySqlDbConfig {
 		sessionFactory.setHibernateProperties(hibernateProperties());
 		return sessionFactory;
 	}
-	
-	    
-	    @Bean
-	    public DataSource dataSource() {
-	        if (datasource == null) {
-	            HikariConfig config = new HikariConfig();
-	            config.setJdbcUrl(propertyReader.getProperty(CommonConstants.JDBC_URL));
-	            config.setUsername(propertyReader.getProperty(CommonConstants.JDBC_USERNAME));
-	            config.setPassword(propertyReader.getProperty(CommonConstants.JDBC_CREDENTIAL));
-	            /*Changes Related to Database Connection Issue*/
-	            config.setIdleTimeout(CommonConstants.IDLE_TIME_OUT_MS);
-	            config.setConnectionTimeout(CommonConstants.CONNECTION_TIME_OUT);
-	            config.setValidationTimeout(CommonConstants.VALIDATION_TIME_OUT);
-	            config.setMaxLifetime(CommonConstants.MAX_LIFE_TIME);
-	            /*Database Connection Issue Done Here*/
-	            config.setMaximumPoolSize(CommonConstants.MAXIMUM_POOL_SIZE);
-	            config.setAutoCommit(false);
-	            config.addDataSourceProperty(CommonConstants.CACHE_PREP_STMTS,
-	            		propertyReader.getProperty(CommonConstants.HIBERNATE_CACHEPREPSTMTS));
-	            config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SIZE,
-	            		propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESIZE));
-	            config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SQL_LIMIT,
-	            		propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESQLLIMIT));
-	            config.addDataSourceProperty(CommonConstants.USE_SERVER_PREP_STMTS,
-	            		propertyReader.getProperty(CommonConstants.HIBERNATE_USESERVERPREPSTMTS));
-	            datasource = new HikariDataSource(config);
-	        }
-	        return datasource;
 
-	    }
+	@Bean
+	public DataSource dataSource() {
+		if (datasource == null) {
+			HikariConfig config = new HikariConfig();
+			config.setJdbcUrl(propertyReader.getProperty(CommonConstants.JDBC_URL));
+			config.setUsername(propertyReader.getProperty(CommonConstants.JDBC_USERNAME));
+			config.setPassword(propertyReader.getProperty(CommonConstants.JDBC_CREDENTIAL));
+			/* Changes Related to Database Connection Issue */
+			config.setIdleTimeout(CommonConstants.IDLE_TIME_OUT_MS);
+			config.setConnectionTimeout(CommonConstants.CONNECTION_TIME_OUT);
+			config.setValidationTimeout(CommonConstants.VALIDATION_TIME_OUT);
+			config.setMaxLifetime(CommonConstants.MAX_LIFE_TIME);
+			/* Database Connection Issue Done Here */
+			config.setMaximumPoolSize(CommonConstants.MAXIMUM_POOL_SIZE);
+			config.setAutoCommit(false);
+			config.addDataSourceProperty(CommonConstants.CACHE_PREP_STMTS,
+					propertyReader.getProperty(CommonConstants.HIBERNATE_CACHEPREPSTMTS));
+			config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SIZE,
+					propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESIZE));
+			config.addDataSourceProperty(CommonConstants.PREP_STMT_CACHE_SQL_LIMIT,
+					propertyReader.getProperty(CommonConstants.HIBERNATE_PREPSTMTCACHESQLLIMIT));
+			config.addDataSourceProperty(CommonConstants.USE_SERVER_PREP_STMTS,
+					propertyReader.getProperty(CommonConstants.HIBERNATE_USESERVERPREPSTMTS));
+			datasource = new HikariDataSource(config);
+		}
+		return datasource;
+
+	}
 
 	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.put(CommonConstants.HIBERNATE_DIALECT,
-				propertyReader.getProperty(CommonConstants.HIBERNATE_DIALECT));
+		/*
+		 * properties.put(CommonConstants.HIBERNATE_DIALECT,
+		 * propertyReader.getProperty(CommonConstants.HIBERNATE_DIALECT));
+		 */
+		//Register Sql Funcuion
+		properties.put(CommonConstants.HIBERNATE_DIALECT, "com.app.web.config.sql.RegisterSqlFunction");
+		
 		properties.put(CommonConstants.HIBERNATE_SHOW_SQL,
 				propertyReader.getProperty(CommonConstants.HIBERNATE_SHOW_SQL));
 		properties.put(CommonConstants.HIBERNATE_FORMAT_SQL,
@@ -87,5 +88,5 @@ public class MySqlDbConfig {
 		txManager.setSessionFactory(session);
 		return txManager;
 	}
-	
+
 }
